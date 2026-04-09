@@ -16,11 +16,9 @@ import java.util.stream.Collectors;
 public class AiService {
 
     protected final Client client;
-    protected final RecipeDao recipeDao;
 
-    public String askGemini(String prompt) {
+    public String askGemini(String prompt, List<Recipe> recipes) {
 
-        List<Recipe> recipes = recipeDao.findAll();
         String formattedRecipes = recipes.stream()
                 .map(r -> {
                     String tagsFormatted = r.getTags().stream()

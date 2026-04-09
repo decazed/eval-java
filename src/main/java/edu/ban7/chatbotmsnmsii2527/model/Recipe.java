@@ -34,4 +34,7 @@ public class Recipe {
 
     @ManyToMany
     private List<Product> products = new ArrayList<>();
+
+    @Column(nullable = false, columnDefinition = "integer default 0")
+    protected int counter = 0;
 }

@@ -1,6 +1,7 @@
 package edu.ban7.chatbotmsnmsii2527.controller;
 
 import edu.ban7.chatbotmsnmsii2527.dao.RecipeDao;
+import edu.ban7.chatbotmsnmsii2527.dto.RecipeStatsDto;
 import edu.ban7.chatbotmsnmsii2527.model.Recipe;
 import edu.ban7.chatbotmsnmsii2527.security.IsAdmin;
 import jakarta.validation.Valid;
@@ -77,5 +78,18 @@ public class RecipeController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/recipe/counterStats")
+    @IsAdmin
+    public ResponseEntity<List<RecipeStatsDto>> stats() {
+        List<RecipeStatsDto> stats = recipeDao.findAll().stream().map(
+                recipe -> new RecipeStatsDto(
+                        recipe.getId(),
+                        recipe.getName(),
+                        recipe.getCounter()
+                )
+        ).toList();
+
+        return ResponseEntity.ok(stats);
+    }
 
 }
