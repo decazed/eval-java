@@ -13,16 +13,16 @@ import java.util.Map;
 @Repository
 public interface RecipeDao extends JpaRepository<Recipe,Integer> {
 
-    @Query("SELECT new edu.ban7.chatbotmsnmsii2527.dao.RecipeDao.RecipeCount(r.name, count(*)) " +
-            "FROM Recipe r " +
-            "JOIN r.tags t")
-    RecipeCount[] countTagByRecipe();
-
-    @Query("SELECT count(*) " +
-            "FROM Recipe r " +
-            "JOIN r.tags t " +
-            "WHERE r.name = :name")
-    int countTagByRecipeName(@Param("name") String name);
-
-    record RecipeCount (String name, long count){}
+//    @Query("SELECT new edu.ban7.chatbotmsnmsii2527.dao.RecipeDao.RecipeCount(r.name, count(*)) " +
+//            "FROM Recipe r " +
+//            "JOIN r.tags t")
+//    RecipeCount[] countTagByRecipe();
+//
+//    @Query("SELECT count(*) " +
+//            "FROM Recipe r " +
+//            "JOIN r.tags t " +
+//            "WHERE r.name = :name")
+//    int countTagByRecipeName(@Param("name") String name);
+//
+//    record RecipeCount (String name, long count){}
 }
